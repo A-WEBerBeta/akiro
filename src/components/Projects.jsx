@@ -65,14 +65,14 @@ export default function Projects() {
                       {/* faux navigateur avec vrai screen dedans */}
                       <div className="absolute left-1/2 top-1/2 h-[85%] w-[65%] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-3xl border border-black/5 bg-white shadow-[0_20px_60px_rgba(0,0,0,0.10)] transition-all duration-700 ease-out group-hover:scale-[1.02] group-hover:-rotate-1">
                         {/* top bar navigateur */}
-                        <div className="flex items-center gap-1.5 border-b border-black/5 px-5 py-4">
+                        <div className="flex h-8 items-center gap-1.5 border-b border-black/5 px-5 py-4">
                           <span className="h-3 w-3 rounded-full bg-black/10" />
                           <span className="h-3 w-3 rounded-full bg-black/10" />
                           <span className="h-3 w-3 rounded-full bg-black/10" />
                         </div>
 
                         {/* screenshot */}
-                        <div className="relative h-[calc(100%-60px)] w-full overflow-hidden bg-[#F5F2EE]">
+                        <div className="relative h-[calc(100%-45px)] w-full overflow-hidden bg-[#F5F2EE]">
                           <img
                             src={project.image}
                             alt={project.title}
