@@ -17,13 +17,13 @@ export default function Header() {
             Services
           </a>
           <a
-            href="#services"
+            href="#realisations"
             className="text-sm text-neutral-600 transition hover:text-neutral-900"
           >
             Réalisations
           </a>
           <a
-            href="#services"
+            href="#contact"
             className="text-sm text-neutral-600 transition hover:text-neutral-900"
           >
             Contact

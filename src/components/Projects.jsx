@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { projects } from "../data/projects";
 import Reveal from "./Reveal";
 
@@ -38,7 +39,10 @@ export default function Projects() {
               start="start 95%"
               end="start 60%"
             >
-              <article className="group cursor-pointer transition-transform duration-500 ease-out hover:-translate-y-1">
+              <Link
+                to={`/projet/${project.id}`}
+                className="group cursor-pointer transition-transform duration-500 ease-out hover:-translate-y-1"
+              >
                 <div className="mb-5 flex items-center justify-between">
                   <span className="text-[11px] uppercase tracking-[0.2em] text-black/55">
                     {project.index}
@@ -74,7 +78,7 @@ export default function Projects() {
                         {/* screenshot */}
                         <div className="relative h-[calc(100%-45px)] w-full overflow-hidden bg-[#F5F2EE]">
                           <img
-                            src={project.image}
+                            src={project.images.screen}
                             alt={project.title}
                             className="h-full w-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                           />
@@ -105,7 +109,7 @@ export default function Projects() {
                     </div>
                   </div>
                 </div>
-              </article>
+              </Link>
             </Reveal>
           ))}
         </div>

@@ -151,7 +151,7 @@ export default function Services() {
                       className="hidden self-center md:block"
                     >
                       <span
-                        className="inline-flex rounded-full px-4 py-2 text-[11px] uppercase tracking-[0.18em] text-black/80"
+                        className="inline-flex rounded-full px-4 py-2 mr-4 text-[11px] uppercase tracking-[0.18em] text-black/80"
                         style={{ backgroundColor: `${service.color}22` }}
                       >
                         {service.tag}

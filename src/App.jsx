@@ -1,16 +1,13 @@
-import Header from "./components/Header";
-import Hero from "./components/Hero";
-import Projects from "./components/Projects";
-import Services from "./components/Services";
+import { Route, Routes } from "react-router-dom";
+import Home from "./assets/pages/Home";
+import ProjectPage from "./components/ProjectPage";
 
 function App() {
   return (
-    <main className="bg-[#f7f4ee] text-[#161616] min-h-screen">
-      <Header />
-      <Hero />
-      <Services />
-      <Projects />
-    </main>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/projet/:id" element={<ProjectPage />} />
+    </Routes>
   );
 }
 
