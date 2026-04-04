@@ -60,7 +60,7 @@ export default function Projects() {
                       {/* bloc couleur principal */}
                       <div
                         className="absolute right-0 top-0 h-2/3 w-2/3 transition-all duration-700 ease-out group-hover:scale-[1.04] group-hover:translate-x-2 group-hover:-translate-y-2"
-                        style={{ backgroundColor: project.color }}
+                        style={{ backgroundColor: project.homeColor }}
                       />
 
                       {/* bloc secondaire */}
@@ -78,7 +78,7 @@ export default function Projects() {
                         {/* screenshot */}
                         <div className="relative h-[calc(100%-45px)] w-full overflow-hidden bg-[#F5F2EE]">
                           <img
-                            src={project.images.screen}
+                            src={project.images.hero}
                             alt={project.title}
                             className="h-full w-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                           />

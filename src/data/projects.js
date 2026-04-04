@@ -1,8 +1,8 @@
-import plomberieScreen1 from "../assets/projects/plomberie/plomberie-1.png";
-import plomberieScreen2 from "../assets/projects/plomberie/plomberie-2.png";
+import plomberieContact from "../assets/projects/plomberie/plomberie-contact.png";
+import plomberieFull from "../assets/projects/plomberie/plomberie-full.png";
 import plomberieHero from "../assets/projects/plomberie/plomberie-hero.png";
-import plomberieScreen3 from "../assets/projects/plomberie/plomberie-mobile.png";
-import plomberieScreen from "../assets/projects/plomberie/plomberie-screen.png";
+import plomberieMobile from "../assets/projects/plomberie/plomberie-mobile.png";
+import plomberieServices from "../assets/projects/plomberie/plomberie-services.png";
 
 import obsidianScreen1 from "../assets/projects/obsidian/obsidian-1.png";
 import obsidianScreen2 from "../assets/projects/obsidian/obsidian-2.png";
@@ -22,8 +22,6 @@ export const projects = [
     index: "01",
     title: "Plomberie Lunéville",
     category: "Site vitrine",
-    year: "2026",
-    role: "Conception & développement",
     tagline: "Présenter une activité locale de manière claire et accessible.",
     taglineSub:
       "Un site pensé pour rendre les services, les informations utiles et la prise de contact immédiatement compréhensibles.",
@@ -44,22 +42,29 @@ export const projects = [
       },
     ],
     images: {
-      screen: plomberieScreen,
       hero: plomberieHero,
-      gallery: [plomberieScreen1, plomberieScreen2, plomberieScreen3],
+      full: plomberieFull,
+      services: plomberieServices,
+      contact: plomberieContact,
+      mobile: plomberieMobile,
     },
     palette: [
-      { name: "Deep blue", hex: "#1E3A5F" },
-      { name: "Bright blue", hex: "#4FA3D1" },
-      { name: "Soft sand", hex: "#F5F2EE" },
-      { name: "Accent orange", hex: "#ff5722" },
+      { name: "Bleu atelier", hex: "#1A365D" },
+      { name: "Bleu signal", hex: "#00BCD4" },
+      { name: "Orange urgence", hex: "#FF5722" },
+      { name: "Fond atelier", hex: "#F8F8fA" },
+      { name: "Encre", hex: "#2B2E34" },
     ],
     typography: {
       primary: "Inter",
-      secondary: "System UI",
-      weights: ["Regular", "SemiBold", "Bold"],
+      secondary: "system-ui",
+      weights: ["Regular", "Medium", "Bold"],
     },
     homeColor: "#D88A5A",
+
+    designMark: "plomberie",
+    markLeft: "◐",
+    markRight: "◑",
   },
 
   {
@@ -89,15 +94,17 @@ export const projects = [
       },
     ],
     images: {
-      screen: obsidianScreen,
       hero: obsidianHero,
-      gallery: [obsidianScreen1, obsidianScreen2, obsidianScreen3],
+      full: obsidianScreen,
+      detailOne: obsidianScreen1,
+      detailTwo: obsidianScreen2,
+      mobile: obsidianScreen3,
     },
     palette: [
-      { name: "Black", hex: "#111111" },
-      { name: "Off white", hex: "#F5F2EE" },
-      { name: "Dust blue", hex: "#A8B7C8" },
-      { name: "Muted beige", hex: "#D8D1C8" },
+      { name: "Noir studio", hex: "#111111" },
+      { name: "Craie", hex: "#F5F2EE" },
+      { name: "Bleu poussière", hex: "#A8B7C8" },
+      { name: "Beige sourd", hex: "#D8D1C8" },
     ],
     typography: {
       primary: "Instrument Sans",
