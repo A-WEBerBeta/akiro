@@ -28,7 +28,7 @@ const variantsMap = {
       x: 0,
       y: 0,
       filter: "blur(0px)",
-      transition: { duration: 1.2, ease: [0.22, 1, 0.36, 1] },
+      transition: { duration: 1.05, ease: [0.22, 1, 0.36, 1] },
     },
   },
   soft: {

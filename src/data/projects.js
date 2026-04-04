@@ -2,18 +2,21 @@ import plomberieContact from "../assets/projects/plomberie/plomberie-contact.png
 import plomberieFull from "../assets/projects/plomberie/plomberie-full.png";
 import plomberieHero from "../assets/projects/plomberie/plomberie-hero.png";
 import plomberieMobile from "../assets/projects/plomberie/plomberie-mobile.png";
+import plomberieScreen from "../assets/projects/plomberie/plomberie-screen.png";
 import plomberieServices from "../assets/projects/plomberie/plomberie-services.png";
 
 import obsidianScreen1 from "../assets/projects/obsidian/obsidian-1.png";
 import obsidianScreen2 from "../assets/projects/obsidian/obsidian-2.png";
+import obsidianGallery from "../assets/projects/obsidian/obsidian-gallery.png";
+import obsidianHero from "../assets/projects/obsidian/obsidian-hero.png";
 import obsidianScreen3 from "../assets/projects/obsidian/obsidian-mobile.png";
 import obsidianScreen from "../assets/projects/obsidian/obsidian-screen.png";
-import obsidianHero from "../assets/projects/obsidian/test.png";
 
 import mokaScreen1 from "../assets/projects/moka/moka-1.png";
 import mokaScreen2 from "../assets/projects/moka/moka-2.png";
+import mokaFull from "../assets/projects/moka/moka-full.png";
 import mokaHero from "../assets/projects/moka/moka-hero.png";
-import mokaScreen3 from "../assets/projects/moka/moka-mobile.png";
+import mokaMobile from "../assets/projects/moka/moka-mobile.png";
 import mokaScreen from "../assets/projects/moka/moka-screen.png";
 
 export const projects = [
@@ -47,6 +50,7 @@ export const projects = [
       services: plomberieServices,
       contact: plomberieContact,
       mobile: plomberieMobile,
+      screen: plomberieScreen,
     },
     palette: [
       { name: "Bleu atelier", hex: "#1A365D" },
@@ -95,10 +99,11 @@ export const projects = [
     ],
     images: {
       hero: obsidianHero,
-      full: obsidianScreen,
+      full: obsidianGallery,
       detailOne: obsidianScreen1,
       detailTwo: obsidianScreen2,
       mobile: obsidianScreen3,
+      screen: obsidianScreen,
     },
     palette: [
       { name: "Noir studio", hex: "#111111" },
@@ -143,7 +148,10 @@ export const projects = [
     images: {
       screen: mokaScreen,
       hero: mokaHero,
-      gallery: [mokaScreen1, mokaScreen2, mokaScreen3],
+      full: mokaFull,
+      detailOne: mokaScreen1,
+      detailTwo: mokaScreen2,
+      mobile: mokaMobile,
     },
     palette: [
       { name: "Coffee brown", hex: "#3D2B1F" },

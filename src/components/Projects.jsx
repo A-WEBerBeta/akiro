@@ -78,7 +78,7 @@ export default function Projects() {
                         {/* screenshot */}
                         <div className="relative h-[calc(100%-45px)] w-full overflow-hidden bg-[#F5F2EE]">
                           <img
-                            src={project.images.hero}
+                            src={project.images.screen}
                             alt={project.title}
                             className="h-full w-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                           />

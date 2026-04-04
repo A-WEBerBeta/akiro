@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
+import MokaProjectPage from "../../components/MokaProjectPage";
 import ObsidianProjectPage from "../../components/ObsidianProjectPage";
 import PlomberieProjectPage from "../../components/PlomberieProjectPage";
 import { projects } from "../../data/projects";
@@ -26,6 +27,10 @@ export default function ProjectPage() {
 
   if (project.id === "obsidian-ink") {
     return <ObsidianProjectPage project={project} />;
+  }
+
+  if (project.id === "moka-miel") {
+    return <MokaProjectPage project={project} />;
   }
 
   return (
