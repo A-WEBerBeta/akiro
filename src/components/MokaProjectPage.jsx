@@ -94,32 +94,61 @@ function MokaDesignBlock({ project }) {
   );
 }
 
-export default function MokaProjectPage({ project }) {
+export default function MokaProjectPage({
+  project,
+  previousProject,
+  nextProject,
+}) {
   return (
     <main className="min-h-screen bg-[#F8F5F0] text-[#3D2B1F]">
       <section className="px-6 pb-14 pt-8 md:px-10 lg:px-16">
-        <Link
-          to="/"
-          className="inline-flex items-center gap-4 text-[12px] uppercase tracking-[0.18em] text-[#3D2B1F]/60 transition-opacity hover:opacity-100"
-        >
-          Retour
-          <span className="h-px w-8 bg-[#3D2B1F]/30" />
-        </Link>
+        <div className="flex flex-wrap items-center justify-between gap-6">
+          <Link
+            to="/"
+            className="inline-flex items-center gap-4 text-[12px] uppercase tracking-[0.18em] text-black/60 transition-all hover:opacity-100 hover:gap-6"
+          >
+            Retour
+            <span className="h-px w-8 bg-black/30" />
+          </Link>
+
+          <div className="flex items-center gap-6 text-[12px] uppercase tracking-[0.18em] text-black/60">
+            {previousProject ? (
+              <Link
+                to={`/projet/${previousProject.id}`}
+                className="inline-flex items-center gap-3 transition-all hover:gap-5"
+              >
+                <span>Précédent</span>
+                <span className="h-px w-8 bg-black/30" />
+              </Link>
+            ) : (
+              <span className="opacity-30">Précédent</span>
+            )}
+
+            {nextProject ? (
+              <Link
+                to={`/projet/${nextProject.id}`}
+                className="inline-flex items-center gap-3 transition-all hover:gap-5"
+              >
+                <span className="h-px w-8 bg-black/30" />
+                <span>Suivant</span>
+              </Link>
+            ) : (
+              <span className="opacity-30">Suivant</span>
+            )}
+          </div>
+        </div>
 
         <MotionReveal direction="left">
           <div className="mt-12 max-w-5xl">
-            <p className="text-[11px] uppercase tracking-[0.2em] text-[#3D2B1F]/45">
+            <p className="text-[11px] uppercase tracking-[0.2em] text-black/45">
               {project.index} — {project.category}
             </p>
 
-            <h1
-              className="mt-5 max-w-[10ch] text-[clamp(4rem,8vw,8rem)] leading-[0.9] tracking-[-0.05em]"
-              style={{ fontFamily: project.typography.primary }}
-            >
+            <h1 className="mt-5 max-w-[10ch] text-[clamp(4rem,8vw,8rem)] leading-[0.9] tracking-[-0.05em]">
               {project.title}
             </h1>
 
-            <p className="mt-8 max-w-xl text-lg leading-7 text-[#3D2B1F]/65">
+            <p className="mt-8 max-w-xl text-lg leading-7 text-black/60">
               {project.tagline}
             </p>
           </div>
@@ -297,22 +326,48 @@ export default function MokaProjectPage({ project }) {
 
       <MotionReveal direction="soft">
         <section className="px-6 pb-20 md:px-10 lg:px-16">
-          <div className="flex items-center justify-between border-t border-[#3D2B1F]/10 pt-10">
-            <Link
-              to="/"
-              className="inline-flex items-center gap-4 text-[12px] uppercase tracking-[0.18em] text-[#3D2B1F]/65 transition-all hover:gap-6"
-            >
-              Retour à l’accueil
-              <span className="h-px w-10 bg-[#3D2B1F]/35 transition-all" />
-            </Link>
+          <div className="grid gap-6 border-t border-black/10 pt-10 md:grid-cols-3 md:items-center">
+            <div>
+              {previousProject ? (
+                <Link
+                  to={`/projet/${previousProject.id}`}
+                  className="inline-flex items-center gap-4 text-xs uppercase tracking-[0.18em] text-black/65 transition-all hover:gap-6"
+                >
+                  <span className="h-px w-10 bg-black/35 transition-all" />
+                  {previousProject.title}
+                </Link>
+              ) : (
+                <span className="text-xs uppercase tracking-[0.18em] text-black/30">
+                  —
+                </span>
+              )}
+            </div>
 
-            <button
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className="inline-flex cursor-pointer items-center gap-3 text-[12px] uppercase tracking-[0.18em] text-[#3D2B1F]/65"
-            >
-              Haut
-              <span className="text-base">↑</span>
-            </button>
+            <div className="flex justify-center">
+              <button
+                onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                className="inline-flex cursor-pointer items-center gap-3 text-xs uppercase tracking-[0.18em] text-black/65 transition-all hover:translate-y-1"
+              >
+                Haut
+                <span className="text-base">↑</span>
+              </button>
+            </div>
+
+            <div className="md:text-right">
+              {nextProject ? (
+                <Link
+                  to={`/projet/${nextProject.id}`}
+                  className="inline-flex items-center gap-4 text-xs uppercase tracking-[0.18em] text-black/65 transition-all hover:gap-6"
+                >
+                  {nextProject.title}
+                  <span className="h-px w-10 bg-black/35 transition-all" />
+                </Link>
+              ) : (
+                <span className="text-xs uppercase tracking-[0.18em] text-black/30">
+                  —
+                </span>
+              )}
+            </div>
           </div>
         </section>
       </MotionReveal>

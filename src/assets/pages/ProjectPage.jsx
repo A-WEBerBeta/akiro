@@ -7,7 +7,8 @@ import { projects } from "../../data/projects";
 
 export default function ProjectPage() {
   const { id } = useParams();
-  const project = projects.find((item) => item.id === id);
+  const currentIndex = projects.findIndex((item) => item.id === id);
+  const project = projects[currentIndex];
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -21,16 +22,27 @@ export default function ProjectPage() {
     );
   }
 
+  const previousProject = currentIndex > 0 ? projects[currentIndex - 1] : null;
+
+  const nextProject =
+    currentIndex < projects.length - 1 ? projects[currentIndex + 1] : null;
+
+  const sharedProps = {
+    project,
+    previousProject,
+    nextProject,
+  };
+
   if (project.id === "plomberie-luneville") {
-    return <PlomberieProjectPage project={project} />;
+    return <PlomberieProjectPage {...sharedProps} />;
   }
 
   if (project.id === "obsidian-ink") {
-    return <ObsidianProjectPage project={project} />;
+    return <ObsidianProjectPage {...sharedProps} />;
   }
 
   if (project.id === "moka-miel") {
-    return <MokaProjectPage project={project} />;
+    return <MokaProjectPage {...sharedProps} />;
   }
 
   return (

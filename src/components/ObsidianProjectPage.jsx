@@ -88,17 +88,49 @@ function ObsidianDesignBlock({ project }) {
   );
 }
 
-export default function ObsidianProjectPage({ project }) {
+export default function ObsidianProjectPage({
+  project,
+  previousProject,
+  nextProject,
+}) {
   return (
     <main className="min-h-screen bg-black text-white">
       <section className="px-6 pb-14 pt-8 md:px-10 lg:px-16">
-        <Link
-          to="/"
-          className="inline-flex items-center gap-4 text-[12px] uppercase tracking-[0.18em] text-white/60 transition-opacity hover:opacity-100"
-        >
-          Retour
-          <span className="h-px w-8 bg-white/30" />
-        </Link>
+        <div className="flex flex-wrap items-center justify-between gap-6">
+          <Link
+            to="/"
+            className="inline-flex items-center gap-4 text-[12px] uppercase tracking-[0.18em] text-white/60 transition-opacity hover:opacity-100"
+          >
+            Retour
+            <span className="h-px w-8 bg-white/30" />
+          </Link>
+
+          <div className="flex items-center gap-6 text-[12px] uppercase tracking-[0.18em] text-white/60">
+            {previousProject ? (
+              <Link
+                to={`/projet/${previousProject.id}`}
+                className="inline-flex items-center gap-3 transition-all hover:gap-5"
+              >
+                <span>Précédent</span>
+                {/* <span className="h-px w-8 bg-white/30" /> */}
+              </Link>
+            ) : (
+              <span className="opacity-30">Précédent</span>
+            )}
+
+            {nextProject ? (
+              <Link
+                to={`/projet/${nextProject.id}`}
+                className="inline-flex items-center gap-3 transition-all hover:gap-5"
+              >
+                <span className="h-px w-8 bg-white/30" />
+                <span>Suivant</span>
+              </Link>
+            ) : (
+              <span className="opacity-30">Suivant</span>
+            )}
+          </div>
+        </div>
 
         <MotionReveal direction="left">
           <div className="mt-12 max-w-5xl">
@@ -275,22 +307,48 @@ export default function ObsidianProjectPage({ project }) {
 
       <MotionReveal direction="soft">
         <section className="px-6 pb-20 md:px-10 lg:px-16">
-          <div className="flex items-center justify-between border-t border-white/10 pt-10">
-            <Link
-              to="/"
-              className="inline-flex items-center gap-4 text-[12px] uppercase tracking-[0.18em] text-white/65 transition-all hover:gap-6"
-            >
-              Retour à l’accueil
-              <span className="h-px w-10 bg-white/35 transition-all" />
-            </Link>
+          <div className="grid gap-6 border-t border-white/10 pt-10 md:grid-cols-3 md:items-center">
+            <div>
+              {previousProject ? (
+                <Link
+                  to={`/projet/${previousProject.id}`}
+                  className="inline-flex items-center gap-4 text-xs uppercase tracking-[0.18em] text-white/65 transition-all hover:gap-6"
+                >
+                  <span className="h-px w-10 bg-white/35 transition-all" />
+                  {previousProject.title}
+                </Link>
+              ) : (
+                <span className="text-xs uppercase tracking-[0.18em] text-white/30">
+                  —
+                </span>
+              )}
+            </div>
 
-            <button
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className="inline-flex cursor-pointer items-center gap-3 text-[12px] uppercase tracking-[0.18em] text-white/65"
-            >
-              Haut
-              <span className="text-base">↑</span>
-            </button>
+            <div className="flex justify-center">
+              <button
+                onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                className="inline-flex cursor-pointer items-center gap-3 text-xs uppercase tracking-[0.18em] text-white/65 transition-all hover:translate-y-1"
+              >
+                Haut
+                <span className="text-base">↑</span>
+              </button>
+            </div>
+
+            <div className="md:text-right">
+              {nextProject ? (
+                <Link
+                  to={`/projet/${nextProject.id}`}
+                  className="inline-flex items-center gap-4 text-xs uppercase tracking-[0.18em] text-white/65 transition-all hover:gap-6"
+                >
+                  {nextProject.title}
+                  <span className="h-px w-10 bg-white/35 transition-all" />
+                </Link>
+              ) : (
+                <span className="text-xs uppercase tracking-[0.18em] text-white/30">
+                  —
+                </span>
+              )}
+            </div>
           </div>
         </section>
       </MotionReveal>
