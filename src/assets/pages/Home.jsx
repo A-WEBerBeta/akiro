@@ -1,15 +1,34 @@
+import BackToTop from "../../components/BackToTop";
+import Contact from "../../components/Contact";
+import Footer from "../../components/Footer";
 import Header from "../../components/Header";
-import Hero from "../../components/Hero";
+import Hero2 from "../../components/Hero2";
 import Projects from "../../components/Projects";
+import SectionDivider from "../../components/SectionDivider";
 import Services from "../../components/Services";
 
 export default function Home() {
   return (
     <main className="bg-[#f7f4ee] text-[#161616] min-h-screen">
       <Header />
-      <Hero />
+      <Hero2 />
+      <SectionDivider
+        title="Une approche centrée sur l'impact et la clarté."
+        quote="Savoir-faire & Vision"
+      />
       <Services />
+      <SectionDivider
+        title="L'équilibre entre forme et fonction."
+        quote="Philosophie"
+      />
       <Projects />
+      <SectionDivider
+        title="Votre projet mérite une identité singulière."
+        quote="Et si on commençait ?"
+      />
+      <Contact />
+      <Footer />
+      <BackToTop />
     </main>
   );
 }

@@ -23,7 +23,7 @@ export const projects = [
   {
     id: "plomberie-luneville",
     index: "01",
-    title: "Plomberie Lunéville",
+    title: "Plomberie",
     category: "Site vitrine",
     tagline: "Présenter une activité locale de manière claire et accessible.",
     taglineSub:
