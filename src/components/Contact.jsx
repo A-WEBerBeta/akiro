@@ -131,10 +131,11 @@ export default function Contact() {
 
               {/* CTA */}
               <div className="mt-8 flex justify-start">
-                <motion.button
+                <motion.a
+                  href="mailto:akiro.studio.contact@gmail.com?subject=Demande de projet — Akiro Studio"
                   whileHover="hover"
                   initial="rest"
-                  className="group relative flex items-center justify-center overflow-hidden rounded-full border border-white/20 px-12 py-6 transition-colors duration-500 hover:border-transparent"
+                  className="group relative flex items-center justify-center overflow-hidden rounded-full border border-white/20 px-12 py-6 transition-colors duration-500 hover:border-transparent cursor-pointer"
                 >
                   <motion.div
                     variants={{
@@ -157,7 +158,7 @@ export default function Contact() {
                     }}
                     className="relative z-10 ml-4 h-1.5 w-1.5 rounded-full bg-white"
                   />
-                </motion.button>
+                </motion.a>
               </div>
             </form>
           </MotionReveal>

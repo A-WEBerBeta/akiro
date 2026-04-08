@@ -1,16 +1,44 @@
-# React + Vite
+# Akiro Studio // Création Web & Design Digital
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Studio de création numérique basé à Verdun, Meuse (55). Spécialisé dans la conception d'interfaces minimalistes et le développement web haute performance.
 
-Currently, two official plugins are available:
+## Le Concept
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Akiro Studio propose une approche "blueprint" du webdesign : clarté, précision chirurgicale et esthétique technique. Le projet phare est une interface interactive avec système de radar dynamique et navigation immersive.
 
-## React Compiler
+## Stack Technique
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Framework :** React.js (Vite)
+- **Styling :** Tailwind CSS
+- **Animations :** Framer Motion (Gestion des flux de données et interactions radar)
+- **Déploiement :** Vercel
+- **SEO :** Optimisation locale (Meuse/Grand-Est) et Données structurées (JSON-LD)
 
-## Expanding the ESLint configuration
+## Fonctionnalités
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Radar Interactif :** Visualisation de données techniques en temps réel.
+- **Interface Adaptive :** Design responsive pensé pour la performance mobile.
+- **Sécurité & Privée :** Mentions légales conformes sans exposition de données personnelles sensibles.
+
+## Installation locale
+
+```bash
+# Cloner le projet
+git clone https://github.com/A-WEBerBeta/akiro.git
+
+# Installer les dépendances
+npm install
+
+# Lancer en mode dev
+npm run dev
+```
+
+## Contact
+
+Aurélie Weber - Responsable AKIRO  
+Verdun, Meuse (55)  
+akiro.studio.contact@gmail.com
+
+---
+
+© 2026 Akiro Studio — Tous droits réservés.

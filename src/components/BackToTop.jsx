@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowUp } from "lucide-react"; // Import de Lucide
+import { ArrowUp } from "lucide-react";
 import { useEffect, useState } from "react";
 
 export default function BackToTop() {

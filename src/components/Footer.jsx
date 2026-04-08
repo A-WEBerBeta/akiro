@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
-export default function Footer() {
+export default function Footer({ setModalMode }) {
   const currentYear = new Date().getFullYear();
   const accentColors = ["#DE8F61", "#819179", "#A8B7C8"];
   const [colorIndex, setColorIndex] = useState(0);
@@ -82,18 +82,24 @@ export default function Footer() {
           </p>
           <div className="space-y-8">
             <a
-              href="mailto:contact@akiro-studio.com"
+              href="mailto:akiro.studio.contact@gmail.com"
               className="text-sm font-bold text-neutral-900 border-b-2 border-black/10 pb-1 hover:border-black transition-all block w-fit relative z-30"
             >
-              contact@akiro-studio.com
+              akiro.studio.contact@gmail.com
             </a>
-            <div className="flex gap-6 text-[10px] uppercase tracking-widest text-black/60 font-bold">
-              <a href="#" className="hover:text-black transition-colors">
+            <div className="flex gap-6 ">
+              <button
+                onClick={() => setModalMode("mentions")}
+                className="text-[10px] uppercase tracking-widest text-black/60 font-bold cursor-pointer hover:text-black transition-colors"
+              >
                 Mentions
-              </a>
-              <a href="#" className="hover:text-black transition-colors">
+              </button>
+              <button
+                onClick={() => setModalMode("privacy")}
+                className="text-[10px] uppercase tracking-widest text-black/60 font-bold cursor-pointer hover:text-black transition-colors"
+              >
                 Confidentialité
-              </a>
+              </button>
             </div>
           </div>
         </div>
