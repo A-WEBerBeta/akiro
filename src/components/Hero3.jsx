@@ -1,15 +1,16 @@
 import { motion, useScroll, useTransform } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 import { useEffect, useState } from "react";
 import MotionReveal from "./MotionReveal";
 
-export default function Hero2() {
+export default function Hero3() {
   const accentColors = ["#DE8F61", "#819179", "#A8B7C8"];
   const [colorIndex, setColorIndex] = useState(0);
   const [activePanel, setActivePanel] = useState(null);
 
   const { scrollY } = useScroll();
   const yAkiro = useTransform(scrollY, [0, 500], [0, 400]);
-  const opacityAkiro = useTransform(scrollY, [0, 900], [0.04, 0]);
+  const opacityAkiro = useTransform(scrollY, [0, 900], [0.045, 0]);
 
   const panels = [
     {
@@ -18,7 +19,7 @@ export default function Hero2() {
       title: "Services",
       short: "Sites web",
       href: "#services",
-      base: "bg-[rgba(238,230,220,0.56)] backdrop-blur-[2px] text-neutral-950",
+      base: "bg-[rgba(238,230,220,0.48)] backdrop-blur-[2px] text-neutral-950",
       accent: "#DE8F61",
       text: "Sites vitrines sur-mesure, design clair, performance et accompagnement.",
       cta: "Découvrir",
@@ -40,7 +41,7 @@ export default function Hero2() {
       title: "Contact",
       short: "Discuter",
       href: "#contact",
-      base: "bg-neutral-950 text-white",
+      base: "bg-neutral-950/95 text-white",
       accent: "#A8B7C8",
       text: "Une idée, un besoin, une refonte ? Parlons simplement de votre projet.",
       cta: "Écrire",
@@ -58,20 +59,30 @@ export default function Hero2() {
   return (
     <section className="relative flex min-h-0 w-full flex-col overflow-hidden px-6 pb-10 md:px-10 lg:min-h-screen lg:px-16 xl:px-20">
       {/* BRAND HERO */}
-      <div className="absolute left-6 top-7 z-50 flex items-center gap-2 md:left-10 lg:left-16 xl:left-20">
-        <span className="text-[14px] font-black uppercase tracking-[-0.06em] text-neutral-950">
-          AKIRO STUDIO
-        </span>
-        <motion.span
-          animate={{ backgroundColor: accentColors[colorIndex] }}
-          className="h-1.5 w-1.5 rounded-full"
-        />
-      </div>
+      <a
+        href="#hero"
+        className="absolute left-6 top-7 z-50 md:left-10 lg:left-16 xl:left-20"
+      >
+        <div className="flex flex-col leading-none">
+          <div className="flex items-center gap-2">
+            <span className="text-[15px] font-black uppercase tracking-[0.22em] text-neutral-950">
+              AKIRO
+            </span>
+            <motion.span
+              animate={{ backgroundColor: accentColors[colorIndex] }}
+              className="h-1.5 w-1.5 rounded-full"
+            />
+          </div>
+          <span className="mt-2 text-[9px] font-bold uppercase tracking-[0.48em] text-neutral-400">
+            Studio web
+          </span>
+        </div>
+      </a>
 
       {/* LOGO FOND */}
       <motion.div
         style={{ y: yAkiro, opacity: opacityAkiro }}
-        className="pointer-events-none absolute left-0 top-4 z-0 w-full select-none text-left md:top-0"
+        className="pointer-events-none absolute left-0 z-0 w-full select-none text-center lg:text-left"
       >
         <h2 className="text-[24vw] font-black leading-none tracking-tight text-neutral-950 md:text-[28vw]">
           AKIRO
@@ -200,7 +211,7 @@ export default function Hero2() {
                     ease: [0.22, 1, 0.36, 1],
                   },
                 }}
-                className="absolute inset-y-0 left-8 z-10 flex w-[360px] flex-col justify-center"
+                className="absolute inset-y-0 left-8 z-10 flex w-90 flex-col justify-center"
               >
                 <p className="mb-8 text-[12px] font-bold uppercase tracking-[0.45em] opacity-80">
                   {panel.number} —
@@ -217,12 +228,11 @@ export default function Hero2() {
                 </p>
 
                 <div className="mt-10 inline-flex w-fit items-center gap-5">
-                  <span className="text-[12px] font-black uppercase leading-none tracking-[0.35em]">
+                  <span className="text-[12px] font-black uppercase tracking-[0.35em]">
                     {panel.cta}
                   </span>
-                  <span className="flex h-5 items-center text-xl leading-none translate-y-[-1px]">
-                    →
-                  </span>
+
+                  <ArrowRight size={16} strokeWidth={2.5} />
                 </div>
               </motion.div>
             </motion.a>
@@ -231,11 +241,11 @@ export default function Hero2() {
       </div>
 
       {/* CONTENU */}
-      <div className="relative z-20 flex flex-col justify-start pb-0 pt-36 md:pt-40 lg:flex-1 lg:justify-end lg:pb-10 lg:pt-0">
+      <div className="relative z-20 flex flex-col justify-start pt-32 pb-6 md:pt-36 lg:flex-1 lg:justify-end lg:translate-y-8 lg:pb-10 xl:translate-y-12">
         <div className="flex w-full max-w-none flex-col lg:max-w-[calc(60vw-6rem)] xl:max-w-[calc(60vw-8rem)]">
           <MotionReveal direction="up" delay={0.1}>
-            <p className="mb-12 text-[10px] uppercase tracking-[0.55em] text-neutral-400 md:mb-16 md:text-[11px]">
-              Akiro — Création de sites web
+            <p className="mb-8 text-[10px] uppercase tracking-[0.55em] text-neutral-400 md:mb-16 md:text-[11px]">
+              AKIRO — DESIGN & SITES WEB
             </p>
           </MotionReveal>
 
@@ -253,10 +263,13 @@ export default function Hero2() {
           </MotionReveal>
 
           <MotionReveal direction="up" delay={0.4}>
-            <div className="relative z-30 mt-12 border-l-2 border-neutral-900/10 pl-8 md:mt-14 md:pl-10">
-              <p className="max-w-[36rem] text-base leading-relaxed text-neutral-600 md:text-lg lg:max-w-[calc(60vw-10rem)]">
-                Création de <strong>sites internet vitrines performants</strong>{" "}
-                pour les acteurs locaux, artisans et entreprises du Grand-Est.
+            <div className="relative z-30 mt-12 max-w-3xl border-l-2 border-neutral-900/10 pl-8 md:mt-14 md:pl-10 lg:max-w-[calc(60vw-8rem)]">
+              <p className="max-w-2xl text-base leading-[1.75] text-neutral-600 md:text-xl lg:text-[21px]">
+                Des sites web pensés pour les artisans et entreprises du{" "}
+                <span className="font-semibold text-neutral-800">
+                  Grand-Est
+                </span>{" "}
+                : image forte, visibilité et performance.
               </p>
             </div>
           </MotionReveal>
@@ -277,7 +290,7 @@ export default function Hero2() {
                 <a
                   key={panel.id}
                   href={panel.href}
-                  className="flex min-h-[92px] flex-col justify-between border-r border-neutral-950/10 bg-[rgba(238,230,220,0.72)] px-4 py-4 text-neutral-950 last:border-r-0"
+                  className="flex min-h-23 flex-col justify-between border-r border-neutral-950/10 bg-[rgba(238,230,220,0.72)] px-4 py-4 text-neutral-950 last:border-r-0"
                 >
                   <div>
                     <p
@@ -303,54 +316,58 @@ export default function Hero2() {
 
           {/* CTA + RÉSEAUX */}
           <MotionReveal direction="up" delay={0.6}>
-            <div className="mt-8 flex flex-col gap-8 border-t border-neutral-100 pt-8 md:mt-10 lg:flex-row lg:flex-wrap lg:items-center lg:gap-x-8 lg:gap-y-6">
-              <motion.a
-                href="#contact"
-                className="group flex w-full cursor-pointer items-center justify-between gap-5 rounded-2xl border border-white/10 bg-neutral-900/90 px-5 py-3.5 shadow-xl backdrop-blur-sm sm:w-fit lg:order-3 lg:ml-auto"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <span className="text-[10px] font-black uppercase tracking-[0.4em] text-white">
-                  Lancer mon projet
-                </span>
-
-                <motion.div
-                  animate={{ backgroundColor: accentColors[colorIndex] }}
-                  className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full shadow-lg transition-colors duration-1000"
+            <div className="mt-8 flex flex-col gap-6 border-t border-neutral-100 pt-8 xl:flex-row xl:items-center xl:justify-between">
+              {/* Zone gauche groupée */}
+              <div className="flex flex-col gap-16 lg:flex-row lg:flex-wrap lg:items-center">
+                <motion.a
+                  href="#contact"
+                  className="group flex w-fit items-center gap-4 rounded-full bg-neutral-950 px-6 py-3.5 transition-shadow duration-500 hover:shadow-lg"
+                  whileHover={{ scale: 1.025 }}
+                  whileTap={{ scale: 0.98 }}
                 >
-                  <svg
-                    className="block h-3.5 w-3.5 text-black opacity-0 transition-opacity group-hover:opacity-100"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
+                  <motion.span
+                    className="text-[10px] font-black uppercase tracking-[0.35em] text-white"
+                    initial={false}
+                    animate={{ x: 0 }}
+                    whileHover={{ x: 2 }}
+                    transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={3}
-                      d="M14 5l7 7m0 0l-7 7m7-7H3"
+                    Lancer mon projet
+                  </motion.span>
+
+                  <motion.span
+                    animate={{ backgroundColor: accentColors[colorIndex] }}
+                    className="grid h-8 w-8 place-items-center rounded-full text-black"
+                    transition={{ duration: 1 }}
+                    whileHover={{ x: 4, scale: 1.05 }}
+                  >
+                    <ArrowRight
+                      size={16}
+                      strokeWidth={2.5}
+                      className="transition-transform duration-300 group-hover:translate-x-0.5"
                     />
-                  </svg>
-                </motion.div>
-              </motion.a>
+                  </motion.span>
+                </motion.a>
 
-              <div className="flex flex-wrap items-center gap-8 lg:order-1">
-                {["Instagram", "LinkedIn", "GitHub"].map((link) => (
-                  <a
-                    key={link}
-                    href="#"
-                    className="text-[10px] font-bold uppercase tracking-[0.4em] text-neutral-400 transition-colors hover:text-neutral-950"
-                  >
-                    {link}
-                  </a>
-                ))}
+                {/* Liens */}
+                <div className="flex flex-wrap items-center gap-x-8 gap-y-4">
+                  {["Instagram", "LinkedIn", "GitHub"].map((link) => (
+                    <a
+                      key={link}
+                      href="#"
+                      className="text-[10px] font-bold uppercase tracking-[0.4em] text-neutral-400 transition-colors hover:text-neutral-950"
+                    >
+                      {link}
+                    </a>
+                  ))}
+
+                  <div className="hidden h-px w-12 bg-neutral-200 md:block" />
+
+                  <span className="hidden text-[10px] font-bold uppercase tracking-[0.4em] text-neutral-300 md:block">
+                    Disponible // 2026
+                  </span>
+                </div>
               </div>
-
-              <div className="hidden h-px w-12 bg-neutral-200 md:block lg:order-2" />
-
-              <span className="hidden text-[10px] font-bold uppercase tracking-[0.4em] text-neutral-300 md:block lg:order-2">
-                Disponible // 2026
-              </span>
             </div>
           </MotionReveal>
         </div>
