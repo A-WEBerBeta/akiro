@@ -46,6 +46,11 @@ export default function Header() {
       <div className="flex w-full items-center justify-between">
         {/* LOGO UNIFIÉ AVEC LE FOOTER */}
         <a href="#hero" className="group flex items-center gap-2">
+          {/* <img
+            src={akiroLogo}
+            alt="Akiro logo"
+            className="h-8 w-8 opacity-80"
+          /> */}
           <span className="text-sm font-bold tracking-tighter text-neutral-900 flex items-center gap-1.5">
             AKIRO STUDIO
             <motion.div

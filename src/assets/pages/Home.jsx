@@ -3,7 +3,7 @@ import BackToTop from "../../components/BackToTop";
 import Contact from "../../components/Contact";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
-import Hero2 from "../../components/Hero2";
+import Hero3 from "../../components/Hero3";
 import LegalModal from "../../components/LegalModal";
 import Projects from "../../components/Projects";
 import SectionDivider from "../../components/SectionDivider";
@@ -15,7 +15,7 @@ export default function Home() {
   return (
     <main className="bg-[#f7f4ee] text-[#161616] min-h-screen">
       <Header />
-      <Hero2 />
+      <Hero3 />
       <SectionDivider
         title="Une approche centrée sur l'impact et la clarté."
         quote="Savoir-faire & Vision"

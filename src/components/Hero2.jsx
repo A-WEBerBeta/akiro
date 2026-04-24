@@ -160,7 +160,7 @@ export default function Hero2() {
       >
         <div className="flex flex-col gap-1 pr-2">
           <span className="text-[10px] font-black uppercase tracking-[0.4em] text-white">
-            Parlons de votre idée
+            Lancer mon projet
           </span>
           {/* Barre qui s'anime au hover pour confirmer l'interaction */}
           <div className="h-px bg-white/40" />

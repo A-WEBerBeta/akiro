@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import akiroLogo from "../assets/akiro-white-transparent.png";
 
 export default function Footer({ setModalMode }) {
   const currentYear = new Date().getFullYear();
@@ -30,6 +31,11 @@ export default function Footer({ setModalMode }) {
         {/* AKIRO STUDIO */}
         <div className="md:col-span-4">
           <div className="group cursor-default">
+            <img
+              src={akiroLogo}
+              alt="Akiro logo"
+              className="h-10 w-10 opacity-80"
+            />
             <span className="text-xl font-bold tracking-tighter text-neutral-900 flex items-center gap-2">
               AKIRO STUDIO
               <motion.div
