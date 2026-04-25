@@ -7,28 +7,28 @@ const services = [
   {
     number: "01",
     title: "Site vitrine",
-    text: "Une présence claire, professionnelle et adaptée à votre activité.",
+    text: "Un site clair, rapide et crédible pour présenter votre activité et générer les bons contacts.",
     tag: "Présence",
     color: "#A8B7C8",
   },
   {
     number: "02",
     title: "Refonte",
-    text: "Un site repensé pour améliorer l’image, la lisibilité et l’efficacité.",
+    text: "Un site repensé pour moderniser votre image, clarifier votre message et améliorer l’expérience utilisateur.",
     tag: "Évolution",
     color: "#DE8F61",
   },
   {
     number: "03",
     title: "Identité visuelle",
-    text: "Une base cohérente pour harmoniser votre présence en ligne.",
+    text: "Une direction graphique cohérente pour rendre votre marque plus reconnaissable en ligne.",
     tag: "Cohérence",
     color: "#819179",
   },
   {
     number: "04",
     title: "Landing page",
-    text: "Une page pensée pour présenter une offre ou un service avec clarté.",
+    text: "Une page ciblée pour mettre en avant une offre, une campagne ou un service et favoriser l’action.",
     tag: "Conversion",
     color: "#D9A6B0",
   },
@@ -36,91 +36,158 @@ const services = [
 
 export default function Services() {
   const [activeService, setActiveService] = useState(null);
+  const [isInside, setIsInside] = useState(false);
 
   return (
     <section
       id="services"
-      className="relative w-full px-6 py-24 md:px-10 lg:px-16 xl:px-20 overflow-x-clip select-none bg-white"
+      onMouseEnter={() => setIsInside(true)}
+      onMouseLeave={() => {
+        setIsInside(false);
+        setActiveService(null);
+      }}
+      className="relative flex min-h-0 w-full items-center overflow-hidden bg-white px-6 py-24 md:px-10 md:py-28 lg:min-h-screen lg:px-16 lg:py-20 xl:px-20"
     >
-      {/* CURSEUR PERSONNALISÉ */}
       <AnimatePresence>
-        {activeService && <FollowCursor service={activeService} />}
+        {isInside && <FollowCursor service={activeService} />}
       </AnimatePresence>
 
-      <div className="relative z-10 grid gap-16 lg:grid-cols-12">
-        {/* --- BLOC GAUCHE --- */}
-        <div className="lg:col-span-4 lg:sticky lg:top-32 lg:h-fit">
+      <div className="relative z-10 grid w-full gap-16 lg:grid-cols-12 lg:gap-20">
+        {/* LEFT */}
+        <div className="lg:sticky lg:top-32 lg:col-span-4 lg:h-fit lg:cursor-none">
           <MotionReveal direction="left" delay={0.1}>
-            <p className="text-[11px] uppercase tracking-[0.2em] text-black/55 font-bold">
+            <p className="text-[11px] font-bold uppercase tracking-[0.35em] text-black/45">
               Services
             </p>
           </MotionReveal>
+
           <MotionReveal direction="left" delay={0.2}>
-            <h2 className="mt-6 max-w-[11ch] text-[clamp(3rem,4vw,5rem)] leading-[0.9] tracking-[-0.04em] text-neutral-950">
-              Une offre claire, pensée pour le web.
+            <h2 className="mt-7 max-w-[12ch] text-[clamp(3rem,4.4vw,5.4rem)] leading-[0.9] tracking-[-0.065em] text-neutral-950">
+              Des bases solides pour votre présence web.
             </h2>
           </MotionReveal>
+
           <MotionReveal direction="left" delay={0.3}>
-            <p className="mt-6 max-w-sm text-base leading-7 text-black/60 font-light">
-              Des services structurés pour créer une présence en ligne lisible,
-              cohérente et vraiment professionnelle.
+            <p className="mt-7 max-w-sm text-base leading-7 text-neutral-500 md:text-lg">
+              Des services pensés pour rendre votre image plus claire, votre
+              site plus utile et votre activité plus visible.
             </p>
           </MotionReveal>
         </div>
 
-        {/* --- BLOC DROITE --- */}
-        <div className="lg:col-span-8">
+        {/* RIGHT */}
+        <div className="lg:col-span-8 lg:cursor-none">
           <div className="border-t border-black/10">
-            {services.map((service) => (
-              <div
-                key={service.number}
-                onMouseEnter={() => setActiveService(service)}
-                onMouseLeave={() => setActiveService(null)}
-                // ON CACHE LE CURSEUR ICI
-                className="group relative border-b border-black/10 py-12 lg:py-16 cursor-none"
-              >
-                <div className="relative z-20 grid grid-cols-[50px_1fr] md:grid-cols-[80px_1fr_150px] items-start">
-                  {/* 1. INDEX */}
-                  <div className="flex flex-col gap-6 pt-4">
-                    <span className="text-[11px] font-bold opacity-20">
-                      {service.number}
-                    </span>
-                    <motion.div
-                      animate={{
-                        scale: activeService?.number === service.number ? 1 : 0,
-                      }}
-                      className="h-2 w-2 rounded-full"
-                      style={{ backgroundColor: service.color }}
-                    />
-                  </div>
+            {services.map((service) => {
+              const isActive = activeService?.number === service.number;
 
-                  {/* 2. TITRE (LE RÉSULTAT PROPRE) */}
-                  <div className="flex flex-col items-start min-w-0">
-                    <div className="relative h-[1.3em] overflow-hidden text-[clamp(2rem,4vw,4rem)] font-medium leading-[1.3] tracking-[-0.05em] text-neutral-400">
-                      <span className="flex flex-col transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover:-translate-y-1/2">
-                        <span className="h-[1.3em] flex items-center whitespace-nowrap pr-4">
-                          {service.title}
-                        </span>
-                        <span className="h-[1.3em] flex items-center text-black whitespace-nowrap pr-4">
-                          {service.title}
-                        </span>
-                      </span>
+              return (
+                <div
+                  key={service.number}
+                  onMouseEnter={() => setActiveService(service)}
+                  onMouseLeave={() => setActiveService(null)}
+                  className="group relative border-b border-black/10 py-9 md:py-10 lg:py-10 xl:py-11"
+                >
+                  {/* ACCENT LINE */}
+                  <motion.div
+                    initial={false}
+                    animate={{
+                      scaleX: isActive ? 1 : 0,
+                      opacity: isActive ? 1 : 0,
+                    }}
+                    transition={{
+                      duration: 0.85,
+                      ease: [0.19, 1, 0.22, 1],
+                    }}
+                    className="absolute bottom-0 left-0 h-[2px] w-full origin-left"
+                    style={{ backgroundColor: service.color }}
+                  />
+
+                  <div className="relative z-10 grid gap-6 md:grid-cols-[80px_1fr_150px] md:items-start">
+                    {/* NUMBER */}
+                    <div className="flex items-center gap-4 md:block md:pt-2">
+                      <motion.span
+                        animate={{
+                          color: isActive ? service.color : "rgba(0,0,0,0.22)",
+                        }}
+                        transition={{ duration: 0.35 }}
+                        className="text-[11px] font-bold tracking-[0.25em]"
+                      >
+                        {service.number}
+                      </motion.span>
+
+                      <motion.div
+                        animate={{
+                          width: isActive ? 42 : 16,
+                          backgroundColor: isActive
+                            ? service.color
+                            : "rgba(0,0,0,0.14)",
+                        }}
+                        transition={{
+                          duration: 0.55,
+                          ease: [0.22, 1, 0.36, 1],
+                        }}
+                        className="h-px md:mt-6"
+                      />
                     </div>
 
-                    <p className="mt-8 max-w-xl text-lg font-light text-neutral-500 opacity-60 group-hover:opacity-100 transition-opacity duration-500">
-                      {service.text}
-                    </p>
-                  </div>
+                    {/* CONTENT */}
+                    <div className="min-w-0">
+                      {/* TITLE TEXT REVEAL */}
+                      <div className="relative inline-block max-w-full overflow-visible pb-[0.16em] pr-[0.08em]">
+                        <h3 className="text-[clamp(2.4rem,4.6vw,5.2rem)] font-medium leading-[1.14] tracking-[-0.075em] text-neutral-400">
+                          {service.title}
+                        </h3>
 
-                  {/* 3. TAGS */}
-                  <div className="hidden md:flex justify-end pt-5 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-black/40 italic whitespace-nowrap">
-                      // {service.tag}
-                    </span>
+                        <motion.h3
+                          aria-hidden="true"
+                          initial={false}
+                          animate={{
+                            clipPath: isActive
+                              ? "inset(-8% -8% -14% 0%)"
+                              : "inset(-8% 108% -14% 0%)",
+                          }}
+                          transition={{
+                            duration: 1.15,
+                            ease: [0.19, 1, 0.22, 1],
+                          }}
+                          className="absolute left-0 top-0 text-[clamp(2.4rem,4.6vw,5.2rem)] font-medium leading-[1.14] tracking-[-0.075em] text-neutral-950"
+                        >
+                          {service.title}
+                        </motion.h3>
+                      </div>
+
+                      <motion.p
+                        animate={{
+                          opacity: isActive ? 1 : 0.55,
+                        }}
+                        transition={{
+                          duration: 0.55,
+                          ease: [0.22, 1, 0.36, 1],
+                        }}
+                        className="mt-4 max-w-2xl text-base leading-7 text-neutral-500 md:text-lg"
+                      >
+                        {service.text}
+                      </motion.p>
+                    </div>
+
+                    {/* TAG */}
+                    <div className="hidden justify-end pt-4 md:flex">
+                      <motion.span
+                        animate={{
+                          opacity: isActive ? 1 : 0.22,
+                          color: isActive ? service.color : "rgba(0,0,0,0.35)",
+                        }}
+                        transition={{ duration: 0.35 }}
+                        className="whitespace-nowrap text-[10px] font-bold uppercase tracking-[0.35em]"
+                      >
+                        // {service.tag}
+                      </motion.span>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </div>
