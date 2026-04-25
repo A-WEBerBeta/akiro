@@ -45,8 +45,7 @@ export default function Footer({ setModalMode }) {
               />
             </span>
             <p className="mt-6 text-[11px] uppercase tracking-[0.2em] text-black/60 font-bold leading-relaxed max-w-[28ch]">
-              Conception de sites vitrines <br /> & expériences numériques à
-              Verdun.
+              Sites web premium & identités digitales à Verdun.
             </p>
           </div>
         </div>
@@ -89,7 +88,7 @@ export default function Footer({ setModalMode }) {
           <div className="space-y-8">
             <a
               href="mailto:akiro.studio.contact@gmail.com"
-              className="text-sm font-bold text-neutral-900 border-b-2 border-black/10 pb-1 hover:border-black transition-all block w-fit relative z-30"
+              className="text-sm font-medium text-neutral-900 border-b-2 border-black/10 pb-1 hover:border-black transition-all block w-fit relative z-30"
             >
               akiro.studio.contact@gmail.com
             </a>
@@ -116,7 +115,7 @@ export default function Footer({ setModalMode }) {
             Localisation
           </p>
           <p className="text-[11px] uppercase tracking-[0.2em] text-black/60 font-bold leading-loose">
-            Grand Est
+            Grand-Est
             <br />
             Meuse // 55
           </p>

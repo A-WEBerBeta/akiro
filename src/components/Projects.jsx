@@ -6,18 +6,19 @@ export default function Projects() {
   return (
     <section
       id="réalisations"
-      className="w-full py-40 bg-white overflow-hidden"
+      className="w-full overflow-hidden bg-white py-24 md:py-32 lg:py-40"
     >
-      {/* --- HEADER : Wording Archive --- */}
-      <div className="px-6 md:px-10 lg:px-24 mb-32 flex flex-col md:flex-row md:items-end justify-between gap-12">
+      {/* HEADER */}
+      <div className="mb-20 flex flex-col justify-between gap-10 px-6 md:mb-28 md:px-10 lg:mb-32 lg:flex-row lg:items-end lg:px-24">
         <MotionReveal direction="left">
           <div className="relative">
-            <span className="text-[10px] uppercase tracking-[0.6em] text-black/20 font-bold block mb-4">
+            <span className="mb-4 block text-[10px] font-bold uppercase tracking-[0.6em] text-black/20">
               Portfolio // Vol. 01
             </span>
-            <h2 className="text-[clamp(2.5rem,6vw,7rem)] font-medium leading-[0.8] tracking-tight text-neutral-950">
+
+            <h2 className="text-[clamp(3rem,9vw,7rem)] font-medium leading-[0.82] tracking-tight text-neutral-950">
               Concepts <br />
-              <span className="italic font-light text-neutral-400">
+              <span className="font-light italic text-neutral-400">
                 Matérialisés.
               </span>
             </h2>
@@ -25,38 +26,41 @@ export default function Projects() {
         </MotionReveal>
 
         <MotionReveal direction="right">
-          <p className="max-w-[30ch] mb-30 text-lg font-light text-black/40 leading-relaxed italic border-l border-black/5 pl-8">
+          <p className="max-w-[32ch] border-l border-black/5 pl-6 text-base font-light italic leading-relaxed text-black/40 md:text-lg lg:mb-30 lg:pl-8">
             Intersections entre design rigoureux et technologies web modernes.
           </p>
         </MotionReveal>
       </div>
 
-      {/* --- LISTE (On ne touche à rien d'autre, tes réglages sont conservés) --- */}
-      <div className="flex flex-col gap-[35vh]">
+      {/* LISTE */}
+      <div className="flex flex-col gap-28 md:gap-36 lg:gap-[35vh]">
         {projects.slice(0, 3).map((project, index) => (
           <div
             key={project.id}
-            className="relative w-full flex flex-col items-center"
+            className="relative flex w-full flex-col items-center"
           >
             {/* FILIGRANE */}
             <div
-              className={`absolute -top-64 w-full pointer-events-none select-none z-0 
-              ${index % 2 === 0 ? "left-10" : "right-0 text-right"}`}
+              className={`pointer-events-none absolute -top-14 z-0 w-full select-none md:-top-28 lg:-top-64 ${
+                index % 2 === 0 ? "left-6 md:left-10" : "right-0 text-right"
+              }`}
             >
-              <span className="text-[26vw] font-black leading-none text-black/5 uppercase tracking-tighter block">
+              <span className="block text-[24vw] font-black uppercase leading-none tracking-tighter text-black/[0.035] md:text-[22vw] lg:text-[26vw] lg:text-black/5">
                 {project.title.split(" ")[0]}
               </span>
             </div>
 
             <div className="relative z-10 w-full px-6 md:px-10 lg:px-24">
               <div
-                className={`relative flex flex-col ${index % 2 !== 0 ? "lg:items-start" : "lg:items-end"}`}
+                className={`relative flex flex-col ${
+                  index % 2 !== 0 ? "lg:items-start" : "lg:items-end"
+                }`}
               >
-                {/* SCREEN (Ton 48% nickel) */}
-                <div className="w-full lg:w-[48%] group relative">
-                  <Link to={`/projet/${project.id}`} className="block relative">
-                    <div className="relative aspect-16/10 bg-[#F8F8F8] p-1.5 rounded-2xl border border-black/3 shadow-[0_40px_100px_-20px_rgba(0,0,0,0.12)] transition-all duration-700 group-hover:shadow-[0_60px_120px_-20px_rgba(0,0,0,0.2)]">
-                      <div className="h-full w-full overflow-hidden rounded-[1.2rem] bg-white">
+                {/* SCREEN */}
+                <div className="group relative w-full lg:w-[48%]">
+                  <Link to={`/projet/${project.id}`} className="relative block">
+                    <div className="relative aspect-16/10 rounded-2xl border border-black/3 bg-[#F8F8F8] p-1.5 shadow-[0_28px_80px_-30px_rgba(0,0,0,0.18)] transition-all duration-700 group-hover:shadow-[0_60px_120px_-20px_rgba(0,0,0,0.2)] md:rounded-[1.75rem] lg:shadow-[0_40px_100px_-20px_rgba(0,0,0,0.12)]">
+                      <div className="h-full w-full overflow-hidden rounded-2xl bg-white md:rounded-[1.35rem]">
                         <img
                           src={project.images.screen}
                           alt={project.title}
@@ -66,46 +70,81 @@ export default function Projects() {
                     </div>
                   </Link>
 
-                  {/* BLOC TEXTE (Tes réglages validés) */}
+                  {/* BLOC TEXTE DESKTOP */}
                   <div
-                    className={`absolute -bottom-24 z-20 hidden lg:block w-[95%] 
-                    ${index % 2 !== 0 ? "-right-[90%]" : "-left-[90%]"}`}
+                    className={`absolute -bottom-24 z-20 hidden w-[95%] lg:block ${
+                      index % 2 !== 0 ? "-right-[90%]" : "-left-[90%]"
+                    }`}
                   >
                     <MotionReveal direction="up">
-                      <div className="p-16 md:p-20 bg-white border border-neutral-100 shadow-[0_50px_120px_rgba(0,0,0,0.07)] rounded-[3.5rem]">
-                        <div className="flex items-center gap-8 mb-12">
+                      <div className="rounded-[3.5rem] border border-neutral-100 bg-white p-16 shadow-[0_50px_120px_rgba(0,0,0,0.07)] md:p-20">
+                        <div className="mb-12 flex items-center gap-8">
                           <span className="text-xl font-black opacity-10">
                             {project.index}
                           </span>
                           <div className="h-px w-24 bg-black/5" />
-                          <span className="text-[12px] uppercase tracking-[0.6em] text-black/30 font-bold italic">
+                          <span className="text-[12px] font-bold uppercase tracking-[0.6em] text-black/30 italic">
                             // {project.category}
                           </span>
                         </div>
 
-                        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-12">
+                        <div className="flex flex-col justify-between gap-10 2xl:flex-row 2xl:items-end">
                           <div className="flex-1">
-                            <h3 className="text-[clamp(3rem,6vw,7rem)] font-medium leading-[0.75] tracking-[-0.07em] text-neutral-900 mb-8">
+                            <h3 className="mb-8 text-[clamp(3rem,6vw,7rem)] font-medium leading-[0.75] tracking-[-0.07em] text-neutral-900">
                               {project.title}
                             </h3>
-                            <p className="text-2xl font-light text-black/40 leading-relaxed italic max-w-2xl">
+
+                            <p className="max-w-2xl text-2xl font-light italic leading-relaxed text-black/40">
                               {project.tagline}
                             </p>
                           </div>
 
                           <Link
                             to={`/projet/${project.id}`}
-                            className="group/btn flex items-center gap-8 py-6 px-10 border border-black/5 rounded-full hover:bg-black hover:text-white transition-all duration-500 shrink-0"
+                            className="group/btn flex w-fit shrink-0 items-center gap-6 rounded-full border border-black/5 px-8 py-5 transition-all duration-500 hover:bg-black hover:text-white 2xl:gap-8 2xl:px-10 2xl:py-6"
                           >
-                            <span className="text-[13px] font-black uppercase tracking-[0.4em]">
+                            <span className="text-[11px] font-black uppercase tracking-[0.35em] 2xl:text-[13px] 2xl:tracking-[0.4em]">
                               Explorer
                             </span>
-                            <div className="h-px w-12 bg-current group-hover/btn:w-20 transition-all duration-500" />
+                            <div className="h-px w-10 bg-current transition-all duration-500 group-hover/btn:w-16 2xl:w-12 2xl:group-hover/btn:w-20" />
                           </Link>
                         </div>
                       </div>
                     </MotionReveal>
                   </div>
+
+                  {/* BLOC TEXTE MOBILE / TABLETTE */}
+                  <MotionReveal direction="up">
+                    <div className="mt-6 rounded-4xl border border-neutral-100 bg-white p-7 shadow-[0_30px_80px_rgba(0,0,0,0.06)] md:mt-8 md:rounded-[2.5rem] md:p-10 lg:hidden">
+                      <div className="mb-8 flex items-center gap-5">
+                        <span className="text-sm font-black opacity-15">
+                          {project.index}
+                        </span>
+                        <div className="h-px w-12 bg-black/10" />
+                        <span className="text-[10px] font-bold uppercase tracking-[0.45em] text-black/30 italic">
+                          // {project.category}
+                        </span>
+                      </div>
+
+                      <h3 className="mb-5 text-[clamp(2.6rem,11vw,5rem)] font-medium leading-[0.82] tracking-[-0.07em] text-neutral-900">
+                        {project.title}
+                      </h3>
+
+                      <p className="max-w-xl text-base font-light italic leading-relaxed text-black/45 md:text-xl">
+                        {project.tagline}
+                      </p>
+
+                      <Link
+                        to={`/projet/${project.id}`}
+                        className="mt-8 flex w-fit items-center gap-6 rounded-full border border-black/5 px-7 py-4 transition-all duration-500 hover:bg-black hover:text-white"
+                      >
+                        <span className="text-[11px] font-black uppercase tracking-[0.35em]">
+                          Explorer
+                        </span>
+                        <div className="h-px w-10 bg-current" />
+                      </Link>
+                    </div>
+                  </MotionReveal>
                 </div>
               </div>
             </div>
