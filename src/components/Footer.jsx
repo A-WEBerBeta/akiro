@@ -88,7 +88,7 @@ export default function Footer({ setModalMode }) {
           <div className="space-y-8">
             <a
               href="mailto:akiro.studio.contact@gmail.com"
-              className="text-sm font-medium text-neutral-900 border-b-2 border-black/10 pb-1 hover:border-black transition-all block w-fit relative z-30"
+              className="text-sm font-bold text-neutral-900 border-b-2 border-black/10 pb-1 hover:border-black transition-all block w-fit relative z-30"
             >
               akiro.studio.contact@gmail.com
             </a>

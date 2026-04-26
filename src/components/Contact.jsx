@@ -5,7 +5,7 @@ import MotionReveal from "./MotionReveal";
 export default function Contact() {
   const [focused, setFocused] = useState(null);
 
-  const darkBg = "#141414";
+  const darkBg = "var(--akiro-dark)";
   const accentColor = "#819179";
 
   const handleSubmit = (e) => {

@@ -3,6 +3,8 @@
 
 :root {
   font-family: "Manrope", sans-serif;
+  --background: #f7f4ee;
+  --akiro-dark: #141414;
 }
 
 body {

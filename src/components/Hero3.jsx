@@ -41,7 +41,7 @@ export default function Hero3() {
       title: "Contact",
       short: "Discuter",
       href: "#contact",
-      base: "bg-neutral-950/95 text-white",
+      base: "bg-(--akiro-dark) text-white",
       accent: "#A8B7C8",
       text: "Une idée, un besoin, une refonte ? Parlons simplement de votre projet.",
       cta: "Écrire",

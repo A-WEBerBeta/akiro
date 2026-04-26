@@ -13,7 +13,7 @@ export default function Home() {
   const [modalMode, setModalMode] = useState(null);
 
   return (
-    <main className="bg-[#f7f4ee] text-[#161616] min-h-screen">
+    <main className="bg-(--background) text-[#161616] min-h-screen">
       <Header />
       <Hero3 />
       <SectionDivider

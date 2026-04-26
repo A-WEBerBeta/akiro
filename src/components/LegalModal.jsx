@@ -61,7 +61,7 @@ akiro.studio.contact@gmail.com`,
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         onClick={onClose}
-        className="fixed inset-0 z-[999] flex items-center justify-center bg-white/60 p-4 backdrop-blur-xl"
+        className="fixed inset-0 z-999 flex items-center justify-center bg-white/60 p-4 backdrop-blur-xl"
       >
         <motion.div
           initial={{ y: 30, scale: 0.98, opacity: 0 }}
