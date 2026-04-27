@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import MokaProjectPage from "../../components/MokaProjectPage";
-import ObsidianProjectPage from "../../components/ObsidianProjectPage";
-import PlomberieProjectPage from "../../components/PlomberieProjectPage";
-import { projects } from "../../data/projects";
+import MokaProjectPage from "../components/MokaProjectPage";
+import ObsidianProjectPage from "../components/ObsidianProjectPage";
+import PlomberieProjectPage from "../components/PlomberieProjectPage";
+import { projects } from "../data/projects";
 
 export default function ProjectPage() {
   const { id } = useParams();

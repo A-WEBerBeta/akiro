@@ -8,9 +8,9 @@ export default function SectionDivider({ title, quote }) {
         {/* Une ligne verticale fine qui guide l'oeil vers le bas */}
         <motion.div
           initial={{ height: 0 }}
-          whileInView={{ height: 80 }}
+          whileInView={{ height: 64 }}
           viewport={{ once: true }}
-          className="w-px bg-black/20 mb-12"
+          className="w-px bg-black/12 mb-10"
         />
 
         <div className="text-center max-w-2xl">

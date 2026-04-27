@@ -1,13 +1,13 @@
 import { useState } from "react";
-import BackToTop from "../../components/BackToTop";
-import Contact from "../../components/Contact";
-import Footer from "../../components/Footer";
-import Header from "../../components/Header";
-import Hero3 from "../../components/Hero3";
-import LegalModal from "../../components/LegalModal";
-import Projects from "../../components/Projects";
-import SectionDivider from "../../components/SectionDivider";
-import Services from "../../components/Services";
+import BackToTop from "../components/BackToTop";
+import Contact from "../components/Contact";
+import Footer from "../components/Footer";
+import Header from "../components/Header";
+import Hero3 from "../components/Hero3";
+import LegalModal from "../components/LegalModal";
+import Projects from "../components/Projects";
+import SectionDivider from "../components/SectionDivider";
+import Services from "../components/Services";
 
 export default function Home() {
   const [modalMode, setModalMode] = useState(null);

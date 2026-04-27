@@ -5,7 +5,7 @@ import MotionReveal from "./MotionReveal";
 export default function Projects() {
   return (
     <section
-      id="réalisations"
+      id="realisations"
       className="w-full overflow-hidden bg-white py-24 md:py-32 lg:py-40"
     >
       {/* HEADER */}

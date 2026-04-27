@@ -99,7 +99,7 @@ export default function Services() {
                       duration: 0.85,
                       ease: [0.19, 1, 0.22, 1],
                     }}
-                    className="absolute bottom-0 left-0 h-[2px] w-full origin-left"
+                    className="absolute bottom-0 left-0 h-0.5 w-full origin-left"
                     style={{ backgroundColor: service.color }}
                   />
 
