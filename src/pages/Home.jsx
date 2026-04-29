@@ -1,4 +1,3 @@
-import { useState } from "react";
 import BackToTop from "../components/BackToTop";
 import Contact from "../components/Contact";
 import Footer from "../components/Footer";
@@ -10,8 +9,6 @@ import SectionDivider from "../components/SectionDivider";
 import Services from "../components/Services";
 
 export default function Home() {
-  const [modalMode, setModalMode] = useState(null);
-
   return (
     <main className="bg-(--background) text-[#161616] min-h-screen">
       <Header />
@@ -31,12 +28,8 @@ export default function Home() {
         quote="Et si on commençait ?"
       />
       <Contact />
-      <Footer setModalMode={setModalMode} />
-      <LegalModal
-        isOpen={modalMode !== null}
-        mode={modalMode}
-        onClose={() => setModalMode(null)}
-      />
+      <Footer />
+      <LegalModal />
       <BackToTop />
     </main>
   );

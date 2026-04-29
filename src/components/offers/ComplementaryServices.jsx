@@ -1,4 +1,4 @@
-import { ArrowRight } from "lucide-react";
+import AkiroCTA from "../AkiroCTA";
 import MotionReveal from "../MotionReveal";
 
 const complementaryServices = [
@@ -58,20 +58,8 @@ export default function ComplementaryServices() {
             </p>
           </MotionReveal>
 
-          <MotionReveal direction="left" delay={0.14}>
-            <a
-              href="/#contact"
-              className="group mt-16 inline-flex items-center gap-5 rounded-xl bg-[#141414] px-9 py-5 text-white shadow-[0_18px_45px_rgba(0,0,0,0.12)] transition-transform duration-500 hover:-translate-y-0.5"
-            >
-              <span className="text-[10px] font-black uppercase tracking-[0.32em]">
-                Demander un devis
-              </span>
-              <ArrowRight
-                size={15}
-                strokeWidth={2.5}
-                className="transition-transform duration-300 group-hover:translate-x-1"
-              />
-            </a>
+          <MotionReveal className="mt-16" direction="left" delay={0.14}>
+            <AkiroCTA href="/#contact" label="Demander un devis" autoColor />
           </MotionReveal>
         </div>
 

@@ -150,18 +150,22 @@ export const tabs = [
 export const steps = [
   [
     "01",
-    "Échange",
-    "On clarifie votre besoin, vos objectifs et vos priorités.",
+    "Premier échange",
+    "On fait le point sur votre activité, vos objectifs et le site le plus adapté à votre besoin.",
   ],
   [
     "02",
-    "Cadrage",
-    "Vous recevez une proposition claire : périmètre, budget, délais.",
+    "Cadrage du projet",
+    "On définit la structure, la direction visuelle, les contenus à prévoir et le déroulé du projet.",
   ],
-  ["03", "Création", "Design, développement et ajustements avancent ensemble."],
+  [
+    "03",
+    "Conception du site",
+    "Le site prend forme étape par étape. Vous suivez l’avancement et validez les ajustements essentiels.",
+  ],
   [
     "04",
     "Mise en ligne",
-    "Votre site est préparé, optimisé et publié proprement.",
+    "Le site est finalisé, vérifié puis publié dans les meilleures conditions.",
   ],
 ];

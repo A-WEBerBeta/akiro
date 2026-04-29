@@ -1,6 +1,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { useEffect, useState } from "react";
+import AkiroCTA from "./AkiroCTA";
 import MotionReveal from "./MotionReveal";
 
 export default function Hero3() {
@@ -57,15 +58,18 @@ export default function Hero3() {
   }, [accentColors.length]);
 
   return (
-    <section className="relative flex min-h-0 w-full flex-col overflow-hidden px-6 pb-10 md:px-10 lg:min-h-screen lg:px-16 xl:px-20">
+    <section
+      id="hero"
+      className="relative flex min-h-0 w-full flex-col overflow-hidden px-6 pb-10 md:px-10 lg:min-h-screen lg:px-16 xl:px-20"
+    >
       {/* BRAND HERO */}
       <a
-        href="#hero"
+        href="/#hero"
         className="absolute left-6 top-7 z-50 md:left-10 lg:left-16 xl:left-20"
       >
         <div className="flex flex-col leading-none">
           <div className="flex items-center gap-2">
-            <span className="text-[15px] font-black uppercase tracking-[0.22em] text-neutral-950">
+            <span className="text-[15px] font-black uppercase tracking-[0.16em] text-neutral-950">
               AKIRO
             </span>
             <motion.span
@@ -319,35 +323,12 @@ export default function Hero3() {
             <div className="mt-8 flex flex-col gap-6 border-t border-neutral-100 pt-8 xl:flex-row xl:items-center xl:justify-between">
               {/* Zone gauche groupée */}
               <div className="flex flex-col gap-16 lg:flex-row lg:flex-wrap lg:items-center">
-                <motion.a
+                <AkiroCTA
                   href="#contact"
-                  className="group flex w-fit items-center gap-4 rounded-full bg-neutral-950 px-6 py-3.5 transition-shadow duration-500 hover:shadow-lg"
-                  whileHover={{ scale: 1.025 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  <motion.span
-                    className="text-[10px] font-black uppercase tracking-[0.35em] text-white"
-                    initial={false}
-                    animate={{ x: 0 }}
-                    whileHover={{ x: 2 }}
-                    transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                  >
-                    Lancer mon projet
-                  </motion.span>
-
-                  <motion.span
-                    animate={{ backgroundColor: accentColors[colorIndex] }}
-                    className="grid h-8 w-8 place-items-center rounded-full text-black"
-                    transition={{ duration: 1 }}
-                    whileHover={{ x: 4, scale: 1.05 }}
-                  >
-                    <ArrowRight
-                      size={16}
-                      strokeWidth={2.5}
-                      className="transition-transform duration-300 group-hover:translate-x-0.5"
-                    />
-                  </motion.span>
-                </motion.a>
+                  label="Lancer mon projet"
+                  colors={accentColors}
+                  colorIndex={colorIndex}
+                />
 
                 {/* Liens */}
                 <div className="flex flex-wrap items-center gap-x-8 gap-y-4">

@@ -25,7 +25,7 @@ export default function BackToTop() {
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: 20 }}
           onClick={scrollToTop}
-          className="fixed bottom-12 right-6 md:right-10 z-100 group flex flex-col items-center gap-4 mix-blend-difference"
+          className="fixed bottom-12 right-4 md:right-4 z-100 group flex flex-col items-center gap-4 mix-blend-difference"
         >
           {/* Texte : Reste en blanc, s'inverse */}
           <span className="text-[9px] text-white uppercase tracking-[0.4em] font-black [writing-mode:vertical-lr] rotate-180 transition-transform duration-500 group-hover:-translate-y-2">

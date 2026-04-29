@@ -1,5 +1,10 @@
 import { useRef, useState } from "react";
+import BackToTop from "../components/BackToTop";
+import Footer from "../components/Footer";
+import Header from "../components/Header";
 import ComplementaryServices from "../components/offers/ComplementaryServices";
+import OffersCTA from "../components/offers/OffersCTA";
+import OffersFAQ from "../components/offers/OffersFAQ";
 import OffersHero from "../components/offers/OffersHero";
 import OffersPlans from "../components/offers/OffersPlans";
 import OffersProcess from "../components/offers/OffersProcess";
@@ -26,6 +31,8 @@ export default function Offers() {
 
   return (
     <main className="min-h-screen bg-(--background) text-neutral-950">
+      <Header />
+
       <OffersHero />
 
       <OffersTabs activeTab={activeTab} onTabClick={handleTabClick} />
@@ -40,6 +47,19 @@ export default function Offers() {
       <ComplementaryServices />
 
       <OffersProcess />
+
+      <SectionDivider
+        title="Les points à clarifier avant de se lancer."
+        quote="Des réponses simples aux vraies questions"
+      />
+
+      <OffersFAQ />
+
+      <OffersCTA />
+
+      <Footer />
+
+      <BackToTop />
     </main>
   );
 }
