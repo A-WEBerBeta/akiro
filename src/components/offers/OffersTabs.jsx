@@ -64,7 +64,7 @@ export default function OffersTabs({ activeTab, onTabClick }) {
                       !active && hoveredTab === tab.key ? "0% 50%" : "100% 50%",
                   }}
                   transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                  className={`block text-[clamp(2.4rem,4.8vw,5.4rem)] font-black uppercase leading-[0.82] tracking-[-0.075em] ${
+                  className={`block pb-[0.12em] text-[clamp(2.4rem,4.6vw,5.2rem)] font-medium leading-[1.2] tracking-[-0.075em] ${
                     active ? "text-white" : "bg-clip-text text-transparent"
                   }`}
                   style={

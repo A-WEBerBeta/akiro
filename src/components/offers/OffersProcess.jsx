@@ -8,7 +8,7 @@ export default function OffersProcess() {
       <div className="mb-20 relative grid gap-12 lg:grid-cols-12 lg:items-end">
         {/* Filigrane */}
         <div className="pointer-events-none absolute -left-10 -top-30 hidden select-none lg:block">
-          <span className="text-[15vw] font-black uppercase leading-none tracking-tighter text-white/2">
+          <span className="text-[16vw] font-black uppercase leading-none tracking-tighter text-white/2">
             PROCESS
           </span>
         </div>
