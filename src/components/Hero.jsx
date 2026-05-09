@@ -1,132 +1,353 @@
-import { AnimatePresence, motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 import { useEffect, useState } from "react";
+import AkiroCTA from "./AkiroCTA";
 import MotionReveal from "./MotionReveal";
 
 export default function Hero() {
-  const accentColors = ["#A8B7C8", "#819179", "#DE8F61"];
+  const accentColors = ["#DE8F61", "#819179", "#A8B7C8"];
   const [colorIndex, setColorIndex] = useState(0);
+  const [activePanel, setActivePanel] = useState(null);
+
+  const { scrollY } = useScroll();
+  const yAkiro = useTransform(scrollY, [0, 500], [0, 400]);
+  const opacityAkiro = useTransform(scrollY, [0, 900], [0.045, 0]);
+
+  const panels = [
+    {
+      id: "services",
+      number: "01",
+      title: "Services",
+      short: "Sites web",
+      href: "#services",
+      base: "bg-[rgba(238,230,220,0.48)] backdrop-blur-[2px] text-neutral-950",
+      accent: "#DE8F61",
+      text: "Sites vitrines sur-mesure, design clair, performance et accompagnement.",
+      cta: "Découvrir",
+    },
+    {
+      id: "realisations",
+      number: "02",
+      title: "Réalisations",
+      short: "Projets",
+      href: "#realisations",
+      base: "bg-[rgba(226,216,204,0.74)] backdrop-blur-[2px] text-neutral-950",
+      accent: "#819179",
+      text: "Des projets pensés pour montrer votre activité sous son meilleur angle.",
+      cta: "Explorer",
+    },
+    {
+      id: "contact",
+      number: "03",
+      title: "Contact",
+      short: "Discuter",
+      href: "#contact",
+      base: "bg-(--akiro-dark) text-white",
+      accent: "#A8B7C8",
+      text: "Une idée, un besoin, une refonte ? Parlons simplement de votre projet.",
+      cta: "Écrire",
+    },
+  ];
 
   useEffect(() => {
     const interval = setInterval(() => {
       setColorIndex((prev) => (prev + 1) % accentColors.length);
-    }, 2800);
+    }, 4000);
+
     return () => clearInterval(interval);
   }, [accentColors.length]);
 
   return (
-    <section className="relative flex min-h-screen w-full flex-col overflow-hidden px-6 pb-16 md:px-10 md:pb-24 lg:px-16 xl:px-20">
-      {/* 1. SPACER HEADER 
-          Ce bloc pousse le contenu vers le bas pour compenser le header en 'fixed'.
-          Ajuster h-[100px] selon la hauteur réelle du menu. */}
-      <div className="h-25 w-full shrink-0 md:h-32.5" />
-
-      {/* 2. LE LOGO GÉANT EN FOND (Calé à gauche) */}
-      <motion.div
-        initial={{ opacity: 0, x: -20 }}
-        animate={{ opacity: 0.04, x: 0 }}
-        transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
-        className="absolute top-0 left-0 z-0 w-full pointer-events-none select-none text-left"
+    <section
+      id="hero"
+      className="relative flex min-h-0 w-full flex-col overflow-hidden px-6 pb-10 md:px-10 lg:min-h-screen lg:px-16 xl:px-20"
+    >
+      {/* BRAND HERO */}
+      <a
+        href="/#hero"
+        className="absolute left-6 top-7 z-50 md:left-10 lg:left-16 xl:left-20"
       >
-        <h2 className="text-[28vw] font-black leading-none tracking-tighter text-neutral-950">
+        <div className="flex flex-col leading-none">
+          <div className="flex items-center gap-2">
+            <span className="text-[15px] font-black uppercase tracking-[0.16em] text-neutral-950">
+              AKIRO
+            </span>
+            <motion.span
+              animate={{ backgroundColor: accentColors[colorIndex] }}
+              className="h-1.5 w-1.5 rounded-full"
+            />
+          </div>
+          <span className="mt-2 text-[9px] font-bold uppercase tracking-[0.48em] text-neutral-400">
+            Studio web
+          </span>
+        </div>
+      </a>
+
+      {/* LOGO FOND */}
+      <motion.div
+        style={{ y: yAkiro, opacity: opacityAkiro }}
+        className="pointer-events-none absolute left-0 z-0 w-full select-none text-center lg:text-left"
+      >
+        <h2 className="text-[24vw] font-black leading-none tracking-tight text-neutral-950 md:text-[28vw]">
           AKIRO
         </h2>
       </motion.div>
 
-      {/* 3. GRILLE DE CONTENU PRINCIPAL
-          'flex-1' occupe tout l'espace restant, 'items-end' pose les éléments en bas. */}
-      <div className="relative z-10 grid flex-1 grid-cols-1 items-end gap-10 lg:grid-cols-12">
-        {/* COLONNE TEXTE */}
-        <div className="lg:col-span-8 lg:pl-4 lg:pb-12">
-          <MotionReveal direction="soft" delay={0.1}>
-            <p className="mb-12 text-sm uppercase tracking-[0.2em] text-neutral-500">
-              AKIRO — création de sites web
+      {/* PANNEAUX DESKTOP */}
+      <div className="pointer-events-auto absolute inset-y-0 right-0 z-40 hidden w-[40vw] lg:flex">
+        {panels.map((panel, index) => {
+          const isActive = activePanel === panel.id;
+          const hasActive = activePanel !== null;
+
+          return (
+            <motion.a
+              key={panel.id}
+              href={panel.href}
+              onHoverStart={() => setActivePanel(panel.id)}
+              onHoverEnd={() => setActivePanel(null)}
+              initial={{ y: -220, opacity: 0 }}
+              animate={{
+                y: 0,
+                opacity: 1,
+                flex: isActive ? 1.72 : hasActive ? 0.74 : 1,
+                backgroundColor: isActive ? panel.accent : undefined,
+              }}
+              transition={{
+                y: {
+                  duration: 1.15,
+                  delay: 0.35 + index * 0.22,
+                  ease: [0.16, 1, 0.3, 1],
+                },
+                opacity: {
+                  duration: 0.75,
+                  delay: 0.35 + index * 0.22,
+                },
+                flex: {
+                  duration: 0.55,
+                  ease: [0.22, 1, 0.36, 1],
+                },
+                backgroundColor: {
+                  duration: 0.45,
+                  ease: [0.22, 1, 0.36, 1],
+                },
+              }}
+              className={`relative h-full overflow-hidden border-l border-black/10 px-8 py-20 ${panel.base}`}
+            >
+              <div className="absolute left-8 top-24">
+                <span className="text-[12px] font-medium tracking-[0.25em]">
+                  {panel.number}
+                </span>
+
+                <motion.div
+                  animate={{ width: isActive ? 64 : 32 }}
+                  transition={{
+                    duration: 0.45,
+                    ease: [0.22, 1, 0.36, 1],
+                  }}
+                  className="mt-4 h-px bg-current opacity-60"
+                />
+              </div>
+
+              <motion.div
+                initial={false}
+                animate={{
+                  opacity: isActive ? 0 : 1,
+                  y: isActive ? 28 : 0,
+                  scale: isActive ? 0.96 : 1,
+                }}
+                transition={{
+                  duration: isActive ? 0.18 : 0.32,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+                className="absolute inset-0 flex items-center justify-center"
+              >
+                <span
+                  className="text-2xl font-black uppercase tracking-[0.25em]"
+                  style={{
+                    writingMode: "vertical-rl",
+                    transform: "rotate(180deg)",
+                  }}
+                >
+                  {panel.title}
+                </span>
+              </motion.div>
+
+              <motion.div
+                initial={false}
+                animate={{
+                  opacity: isActive ? 0 : 0.45,
+                  y: isActive ? 12 : 0,
+                }}
+                transition={{
+                  duration: 0.25,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+                className="absolute bottom-24 left-8"
+              >
+                <div className="mb-4 h-px w-10 bg-current opacity-50" />
+                <span className="text-[10px] font-bold uppercase tracking-[0.35em]">
+                  {panel.short}
+                </span>
+              </motion.div>
+
+              <motion.div
+                initial={false}
+                animate={{
+                  opacity: isActive ? 1 : 0,
+                  y: isActive ? 0 : 18,
+                  clipPath: isActive
+                    ? "inset(0% 0% 0% 0%)"
+                    : "inset(0% 0% 18% 0%)",
+                }}
+                transition={{
+                  opacity: {
+                    duration: isActive ? 0.28 : 0.1,
+                    delay: isActive ? 0.12 : 0,
+                  },
+                  y: {
+                    duration: isActive ? 0.35 : 0.14,
+                    delay: isActive ? 0.12 : 0,
+                    ease: [0.22, 1, 0.36, 1],
+                  },
+                  clipPath: {
+                    duration: 0.45,
+                    delay: isActive ? 0.08 : 0,
+                    ease: [0.22, 1, 0.36, 1],
+                  },
+                }}
+                className="absolute inset-y-0 left-8 z-10 flex w-90 flex-col justify-center"
+              >
+                <p className="mb-8 text-[12px] font-bold uppercase tracking-[0.45em] opacity-80">
+                  {panel.number} —
+                </p>
+
+                <h3 className="text-5xl font-black uppercase tracking-[-0.06em]">
+                  {panel.title}
+                </h3>
+
+                <div className="my-7 h-px w-20 bg-current opacity-60" />
+
+                <p className="w-[320px] text-base leading-relaxed opacity-85">
+                  {panel.text}
+                </p>
+
+                <div className="mt-10 inline-flex w-fit items-center gap-5">
+                  <span className="text-[12px] font-black uppercase tracking-[0.35em]">
+                    {panel.cta}
+                  </span>
+
+                  <ArrowRight size={16} strokeWidth={2.5} />
+                </div>
+              </motion.div>
+            </motion.a>
+          );
+        })}
+      </div>
+
+      {/* CONTENU */}
+      <div className="relative z-20 flex flex-col justify-start pt-32 pb-6 md:pt-36 lg:flex-1 lg:justify-end lg:translate-y-8 lg:pb-10 xl:translate-y-12">
+        <div className="flex w-full max-w-none flex-col lg:max-w-[calc(60vw-6rem)] xl:max-w-[calc(60vw-8rem)]">
+          <MotionReveal direction="up" delay={0.1}>
+            <p className="mb-8 text-[10px] uppercase tracking-[0.55em] text-neutral-400 md:mb-16 md:text-[11px]">
+              AKIRO — DESIGN & SITES WEB
             </p>
           </MotionReveal>
 
           <MotionReveal direction="up" delay={0.2}>
-            <h1 className="max-w-[14ch] text-[clamp(4.5rem,11vw,10rem)] leading-[0.92] tracking-[-0.06em] text-neutral-950">
-              Des sites clairs pour présenter votre activité simplement.
+            <h1 className="text-[clamp(3.2rem,13vw,7rem)] uppercase leading-[0.8] tracking-[-0.07em] text-neutral-950 md:text-[clamp(4.5rem,10vw,9rem)] lg:text-[clamp(3.5rem,8.5vw,9rem)]">
+              <span className="block font-black">Bâtir votre</span>
+              <span className="block font-black">univers web</span>
+              <span className="block font-medium text-neutral-500">
+                sur mesure
+              </span>
+              <span className="block font-light tracking-[-0.05em] text-neutral-400">
+                Verdun // 55
+              </span>
             </h1>
           </MotionReveal>
 
           <MotionReveal direction="up" delay={0.4}>
-            <p className="mt-10 max-w-2xl text-base leading-7 text-neutral-600 md:text-lg">
-              Conception de sites vitrines pour les indépendants, artisans et
-              entreprises à Verdun.
-              <br />
-              Des interfaces lisibles, fiables et adaptées à chaque activité.
-            </p>
+            <div className="relative z-30 mt-12 max-w-3xl border-l-2 border-neutral-900/10 pl-8 md:mt-14 md:pl-10 lg:max-w-[calc(60vw-8rem)]">
+              <p className="max-w-2xl text-base leading-[1.75] text-neutral-600 md:text-xl lg:text-[21px]">
+                Des sites web pensés pour les artisans et entreprises du{" "}
+                <span className="font-semibold text-neutral-800">
+                  Grand-Est
+                </span>{" "}
+                : image forte, visibilité et performance.
+              </p>
+            </div>
           </MotionReveal>
-        </div>
 
-        {/* COLONNE VISUEL / CARTE */}
-        <div className="lg:col-span-4 flex justify-end lg:pb-12">
-          <MotionReveal direction="right" delay={0.3} className="w-full">
-            <div className="relative aspect-4/5 w-full overflow-hidden rounded-[2.5rem] bg-[#EFE7DF]">
-              {/* Carré fixe rose */}
-              <div className="absolute right-0 top-0 h-2/3 w-2/3 bg-[#D9A6B0]" />
+          {/* BARRE MOBILE FULL WIDTH */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: 0.7,
+              delay: 0.65,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+            className="mt-12 -mx-6 overflow-hidden md:-mx-10 lg:hidden"
+          >
+            <div className="grid grid-cols-3">
+              {panels.map((panel) => (
+                <a
+                  key={panel.id}
+                  href={panel.href}
+                  className="flex min-h-23 flex-col justify-between border-r border-neutral-950/10 bg-[rgba(238,230,220,0.72)] px-4 py-4 text-neutral-950 last:border-r-0"
+                >
+                  <div>
+                    <p
+                      className="text-[10px] font-bold tracking-[0.35em]"
+                      style={{ color: panel.accent }}
+                    >
+                      {panel.number}
+                    </p>
 
-              {/* Carré animé (Accent Colors) */}
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={accentColors[colorIndex]}
-                  initial={{ opacity: 0, y: 18 }}
-                  animate={{ opacity: 0.85, y: 0 }}
-                  exit={{ opacity: 0, y: -18 }}
-                  transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                  className="absolute bottom-0 left-0 h-1/2 w-1/2"
-                  style={{ backgroundColor: accentColors[colorIndex] }}
+                    <div
+                      className="mt-3 h-px w-8 opacity-70"
+                      style={{ backgroundColor: panel.accent }}
+                    />
+                  </div>
+
+                  <p className="text-[10px] font-black uppercase tracking-[0.12em] sm:text-[11px] sm:tracking-[0.18em]">
+                    {panel.title}
+                  </p>
+                </a>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* CTA + RÉSEAUX */}
+          <MotionReveal direction="up" delay={0.6}>
+            <div className="mt-8 flex flex-col gap-6 border-t border-neutral-100 pt-8 xl:flex-row xl:items-center xl:justify-between">
+              {/* Zone gauche groupée */}
+              <div className="flex flex-col gap-16 lg:flex-row lg:flex-wrap lg:items-center">
+                <AkiroCTA
+                  href="#contact"
+                  label="Lancer mon projet"
+                  colors={accentColors}
+                  colorIndex={colorIndex}
                 />
-              </AnimatePresence>
 
-              {/* Mockup Card */}
-              <MotionReveal
-                direction="soft"
-                delay={0.6}
-                className="absolute left-1/2 top-1/2 h-[48%] w-[56%] -translate-x-1/2 -translate-y-1/2"
-              >
-                <div className="h-full w-full -rotate-3 scale-[1.03] rounded-3xl border border-black/5 bg-white p-8 shadow-[0_20px_60px_rgba(0,0,0,0.06)]">
-                  <div className="mb-10 flex gap-1.5">
-                    <span className="h-3 w-3 rounded-full bg-black/15" />
-                    <span className="h-3 w-3 rounded-full bg-black/15" />
-                    <span className="h-3 w-3 rounded-full bg-black/15" />
-                  </div>
-                  <div className="space-y-3">
-                    <div className="h-4 w-20 rounded-full bg-black/20" />
-                    <div className="h-4 w-full rounded-full bg-black/20" />
-                    <div className="h-4 w-4/5 rounded-full bg-black/20" />
-                  </div>
-                  <div className="mt-8 h-32 rounded-2xl bg-[#E8DED4]" />
-                  <div className="mt-8 flex items-center justify-between">
-                    <div className="h-3 w-16 rounded-full bg-black/20" />
-                    <div className="h-8 w-24 rounded-full bg-[#C97C8A]" />
-                  </div>
+                {/* Liens */}
+                <div className="flex flex-wrap items-center gap-x-8 gap-y-4">
+                  {["Instagram", "LinkedIn", "GitHub"].map((link) => (
+                    <a
+                      key={link}
+                      href="#"
+                      className="text-[10px] font-bold uppercase tracking-[0.4em] text-neutral-400 transition-colors hover:text-neutral-950"
+                    >
+                      {link}
+                    </a>
+                  ))}
+
+                  <div className="hidden h-px w-12 bg-neutral-200 md:block" />
+
+                  <span className="hidden text-[10px] font-bold uppercase tracking-[0.4em] text-neutral-300 md:block">
+                    Disponible // 2026
+                  </span>
                 </div>
-              </MotionReveal>
-
-              {/* Branding interne Card */}
-              <div className="absolute top-6 left-6 flex items-center gap-3">
-                <div className="h-px w-12 bg-black/40" />
-                <span className="text-sm uppercase tracking-[0.3em] text-black/40">
-                  AKIRO
-                </span>
-              </div>
-
-              {/* Liens RS internes Card */}
-              <div className="absolute bottom-6 left-6 flex items-center gap-4 text-[12px] uppercase tracking-[0.18em] text-black/80">
-                <a
-                  href="#"
-                  className="opacity-70 transition-opacity hover:opacity-100"
-                >
-                  Instagram
-                </a>
-                <span className="h-px w-8 bg-black/50" />
-                <a
-                  href="#"
-                  className="opacity-70 transition-opacity hover:opacity-100"
-                >
-                  LinkedIn
-                </a>
               </div>
             </div>
           </MotionReveal>
