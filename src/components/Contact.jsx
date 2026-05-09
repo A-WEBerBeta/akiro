@@ -51,7 +51,7 @@ ${message}`,
 
           <MotionReveal direction="left" delay={0.2}>
             <h2 className="mt-8 max-w-[12ch] text-[clamp(3rem,4vw,5rem)] font-light leading-[0.95] tracking-[-0.04em] text-white">
-              Parlons de votre prochain chapitre.
+              Parlons de votre projet.
             </h2>
           </MotionReveal>
 

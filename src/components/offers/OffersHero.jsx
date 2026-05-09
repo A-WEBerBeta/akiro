@@ -19,9 +19,9 @@ export default function OffersHero() {
 
           <MotionReveal direction="up" delay={0.2}>
             <h1 className="mt-10 max-w-6xl text-[clamp(3.5rem,8.8vw,9rem)] font-black uppercase leading-[0.78] tracking-[-0.075em]">
-              Des offres claires
+              Des offres simples
               <span className="block font-medium text-neutral-500">
-                sans formule floue.
+                et lisibles.
               </span>
             </h1>
           </MotionReveal>

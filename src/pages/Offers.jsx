@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import BackToTop from "../components/BackToTop";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
@@ -17,6 +17,14 @@ export default function Offers() {
   const packsRef = useRef(null);
 
   const current = offers[activeTab];
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "instant",
+    });
+  }, []);
 
   const handleTabClick = (key) => {
     setActiveTab(key);

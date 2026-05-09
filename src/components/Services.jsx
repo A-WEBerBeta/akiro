@@ -1,5 +1,6 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import FollowCursor from "./FollowCursor";
 import MotionReveal from "./MotionReveal";
 
@@ -82,11 +83,12 @@ export default function Services() {
               const isActive = activeService?.number === service.number;
 
               return (
-                <div
+                <Link
                   key={service.number}
+                  to="/offres"
                   onMouseEnter={() => setActiveService(service)}
                   onMouseLeave={() => setActiveService(null)}
-                  className="group relative border-b border-black/10 py-9 md:py-10 lg:py-10 xl:py-11"
+                  className="group relative block w-full border-b border-black/10 py-9 md:py-10 lg:py-10 xl:py-11"
                 >
                   {/* ACCENT LINE */}
                   <motion.div
@@ -185,7 +187,7 @@ export default function Services() {
                       </motion.span>
                     </div>
                   </div>
-                </div>
+                </Link>
               );
             })}
           </div>

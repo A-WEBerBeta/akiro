@@ -5,7 +5,13 @@ const accents = ["#819179", "#DE8F61", "#A8B7C8", "#819179"];
 export default function OffersProcess() {
   return (
     <section className="bg-[#141414] px-6 py-24 text-white md:px-10 lg:px-16 lg:py-32 xl:px-20">
-      <div className="mb-20 grid gap-12 lg:grid-cols-12 lg:items-end">
+      <div className="mb-20 relative grid gap-12 lg:grid-cols-12 lg:items-end">
+        {/* Filigrane */}
+        <div className="pointer-events-none absolute -left-10 -top-30 hidden select-none lg:block">
+          <span className="text-[15vw] font-black uppercase leading-none tracking-tighter text-white/2">
+            PROCESS
+          </span>
+        </div>
         <div className="lg:col-span-7">
           <p className="text-[11px] font-bold uppercase tracking-[0.45em] text-white/35">
             Process
